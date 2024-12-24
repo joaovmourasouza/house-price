@@ -73,6 +73,17 @@ def csv_file(path: str, name: str, dataset: pd.DataFrame):
     return full_path
 
 def merge_datasets():
+    """
+    Merge all the CSV files from the 'silver' directory into one single CSV file in the 'gold' directory, 
+    removing any duplicate rows and keeping only the last row for each duplicate. The resulting file is
+    named as 'gold_dataset_dd-mm-yyyy.csv', where 'dd-mm-yyyy' is the current date.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    """
     base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     full_path = os.path.join(base_path, 'output','data','silver')
     files_to_load = sorted(os.listdir(full_path))
